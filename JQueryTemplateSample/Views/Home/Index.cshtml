@@ -1,0 +1,68 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Departments</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.ajax({
+                url: '/Home/GetDepartments',
+                type: 'GET',
+                success: function (result) {
+                    for (var i = 0; i < result.length; i++) {
+                        var option = new Option(result[i], result[i]);
+                        $('#departments').append(option);
+                    }
+                }
+            });
+
+            $('#departments').change(function () {
+                var dept = $('#departments').val();
+
+                $.ajax({
+                    url: '/Home/GetEmployeesByDepartment',
+                    type: 'POST',
+                    data: { department: dept },
+                    success: function (result) {
+                        $('#deptTableBody').empty();
+                        $('#deptTemplate').tmpl(result).appendTo('#deptTableBody');
+                    }
+                });
+            });
+        });
+    </script>
+    <script id="deptTemplate" type="text/x-jquery-tmpl">
+        <tr>
+            <td>${Department}</td>
+            <td>${Name}</td>
+            <td>${Position}</td>
+        </tr>
+    </script>
+</head>
+<body>
+    <select id="departments">
+    </select>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Department
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Position
+                </th>
+            </tr>
+        </thead>
+        <tbody id="deptTableBody">
+        </tbody>
+    </table>
+</body>
+</html>

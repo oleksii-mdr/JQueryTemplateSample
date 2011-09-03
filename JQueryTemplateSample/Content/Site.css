@@ -1,0 +1,39 @@
+﻿body
+{
+    background-color: #FFFFFF;
+    font-size: 75%;
+    font-family: Verdana, Tahoma, Arial, "Helvetica Neue" , Helvetica, Sans-Serif;
+    margin: 0;
+    padding: 0;
+    color: #696969;
+}
+
+table
+{
+    border: solid 1px #e8eef4;
+    border-collapse: collapse;
+    position: absolute;
+    top:60px;
+    left: 10px;
+}
+
+table td
+{
+    padding: 5px;
+    border: solid 1px #e8eef4;
+}
+
+table th
+{
+    padding: 6px 5px;
+    text-align: left;
+    background-color: #e8eef4;
+    border: solid 1px #e8eef4;
+}
+
+select
+{    
+    position: absolute;
+    top: 20px;
+    left: 10px;
+}

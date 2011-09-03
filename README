@@ -1,0 +1,6 @@
+URL
+http://blog4work.com/page/Demo.aspx
+
+Jquery template
+
+A simple demo that shows how to use JQuery templates with ASP.NET MVC 3. Static repository is used on a server side and data is pulled by client-side ajax calls. Data is further displayed in a table using jquery templates.
